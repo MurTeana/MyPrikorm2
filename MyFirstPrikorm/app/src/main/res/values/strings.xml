@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Мой первый прикорм</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="nav_header_title">Мой первый прикорм</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="menu_main">Главная</string>
+    <string name="menu_products">Продукты</string>
+    <string name="menu_articles">Статьи</string>
+    <string name="menu_mylist">Моя схема</string>
+    <string name="menu_userprofile">Личный кабинет</string>
+
+    <string name="enter_product">Название продукта</string>
+    <string name="enter_weight">Объем</string>
+    <string name="addBtn_txt">+</string>
+    <string name="loginstart">Привет, с возвращением!</string>
+    <string name="signin">Войти</string>
+    <string name="username">Логин</string>
+    <string name="childname">Имя ребенка</string>
+    <string name="password">Пароль</string>
+    <string name="email">Email</string>
+    <string name="phoneno">Телефон</string>
+    <string name="mychild">Мой малыш</string>
+    <string name="addNewProduct"> Добавить новый продукт</string>
+    <string name="addData">Дата</string>
+    <string name="addMeal">Прием пищи</string>
+    <string name="addProduct">Продукт</string>
+    <string name="addValue">Объем</string>
+</resources>

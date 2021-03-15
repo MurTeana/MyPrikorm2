@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/date_time_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Выберите дату и время"
+            android:inputType="none"/>
+
+        <Spinner
+            android:id="@+id/mealspinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="30sp" />
+
+        <Spinner
+            android:id="@+id/prodspinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="30sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="@string/addValue"
+            android:textColorHint="#B2000000"
+            android:visibility="visible"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addMenuBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:onClick="addMenuToDB"
+        android:text="Добавить"
+        android:textColor="@color/white" />
+</LinearLayout>

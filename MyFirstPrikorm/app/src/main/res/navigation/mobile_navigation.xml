@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_mylist">
+
+    <fragment
+        android:id="@+id/nav_mylist"
+        android:name="com.example.myfirstprikorm.ui.mymenu.MymenuFragment"
+        android:label="@string/menu_mylist"
+        tools:layout="@layout/fragment_mymenu"/>
+
+    <fragment
+        android:id="@+id/nav_products"
+        android:name="com.example.myfirstprikorm.ui.products.ProductsFragment"
+        android:label="@string/menu_products"
+        tools:layout="@layout/fragment_products" />
+    <fragment
+        android:id="@+id/nav_articles"
+        android:name="com.example.myfirstprikorm.ui.articles.ArticlesFragment"
+        android:label="@string/menu_articles"
+        tools:layout="@layout/fragment_articles"/>
+    <fragment
+        android:id="@+id/nav_userprofile"
+        android:name="com.example.myfirstprikorm.ui.userprofile.UserProfileFragment"
+        android:label="@string/menu_userprofile"
+        tools:layout="@layout/activity_user_profile"/>
+</navigation>
