@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyPrikormWebAPI.Repositories;
 using MyPrikormWebAPI.DB.Entities;
+using NLog;
 
 namespace MyPrikormWebAPI.Controllers
 {

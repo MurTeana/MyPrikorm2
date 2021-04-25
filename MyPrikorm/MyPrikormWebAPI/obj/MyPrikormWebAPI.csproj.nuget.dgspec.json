@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\St.Eva\\Desktop\\Projects С#\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj": {}
+    "D:\\Sadukov\\MyPrikorm2\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\St.Eva\\Desktop\\Projects С#\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj": {
+    "D:\\Sadukov\\MyPrikorm2\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\St.Eva\\Desktop\\Projects С#\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj",
+        "projectUniqueName": "D:\\Sadukov\\MyPrikorm2\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj",
         "projectName": "MyPrikormWebAPI",
-        "projectPath": "C:\\Users\\St.Eva\\Desktop\\Projects С#\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj",
+        "projectPath": "D:\\Sadukov\\MyPrikorm2\\MyPrikorm\\MyPrikormWebAPI\\MyPrikormWebAPI.csproj",
         "packagesPath": "C:\\Users\\St.Eva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\St.Eva\\Desktop\\Projects С#\\MyPrikorm\\MyPrikormWebAPI\\obj\\",
+        "outputPath": "D:\\Sadukov\\MyPrikorm2\\MyPrikorm\\MyPrikormWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -44,6 +44,24 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[4.7.9, )"
+            },
+            "NLog.Config": {
+              "target": "Package",
+              "version": "[4.7.9, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.2.5, )"
             }
           },
           "imports": [

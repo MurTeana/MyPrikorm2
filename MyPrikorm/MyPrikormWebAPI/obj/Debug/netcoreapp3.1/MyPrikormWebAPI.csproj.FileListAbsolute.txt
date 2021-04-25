@@ -32,3 +32,42 @@ C:\Users\St.Eva\Desktop\Projects С#\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcore
 C:\Users\St.Eva\Desktop\Projects С#\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\St.Eva\Desktop\Projects С#\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\St.Eva\Desktop\Projects С#\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csproj.CopyComplete
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.exe
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.deps.json
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.runtimeconfig.json
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.runtimeconfig.dev.json
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.pdb
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csprojAssemblyReference.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.AssemblyInfoInputs.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.AssemblyInfo.cs
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.RazorTargetAssemblyInfo.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csproj.CopyComplete
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\staticwebassets\MyPrikormWebAPI.StaticWebAssets.Manifest.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\staticwebassets\MyPrikormWebAPI.StaticWebAssets.xml
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.pdb
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.genruntimeconfig.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\NLog.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\NLog.config
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
