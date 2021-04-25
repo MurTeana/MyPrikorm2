@@ -52,9 +52,7 @@ D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsof
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
-D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csprojAssemblyReference.cache
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.AssemblyInfoInputs.cache
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.AssemblyInfo.cs
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.RazorTargetAssemblyInfo.cache
@@ -74,3 +72,9 @@ D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Pomelo.J
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csproj.CoreCompileInputs.cache
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.MvcApplicationPartsAssemblyInfo.cache
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csprojAssemblyReference.cache

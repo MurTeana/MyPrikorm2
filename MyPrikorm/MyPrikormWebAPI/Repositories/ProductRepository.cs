@@ -12,6 +12,7 @@ namespace MyPrikormWebAPI.Repositories
     public class ProductRepository : IRepositoryProduct
     {
         private ApplicationContext db;
+
         public ProductRepository(ApplicationContext context)
         {
             db = context;
@@ -27,17 +28,18 @@ namespace MyPrikormWebAPI.Repositories
             return await db.Products.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Product> Create(Product product)
+        public Product Create(Product product)
         {
             if (product != null)
             {
                 db.Products.Add(product);
-                await db.SaveChangesAsync();
+                Save();
             }
+
             return product;
         }
 
-        public async Task<Product> Update(Product product)
+        public Product Update(Product product)
         {
             if (!db.Products.Any(x => x.Id == product.Id))
             {
@@ -45,11 +47,11 @@ namespace MyPrikormWebAPI.Repositories
             }
 
             db.Update(product);
-            await db.SaveChangesAsync();
+            Save();
             return product;
         }
 
-        public async Task<Product> Delete(int id)
+        public Product Delete(int id)
         {
             Product product = db.Products.FirstOrDefault(x => x.Id == id);
             if (product == null)
@@ -58,8 +60,13 @@ namespace MyPrikormWebAPI.Repositories
             }
 
             db.Products.Remove(product);
-            await db.SaveChangesAsync();
+            Save();
             return product;
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
         }
     }
 }

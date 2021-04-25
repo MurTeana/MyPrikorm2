@@ -9,9 +9,9 @@ namespace MyPrikormWebAPI.Interfaces
     {
         //Unit of Work -- паттерн
         IRepositoryUser Users { get; }
-        IRepositoryProduct Role { get; }
-        IRepositoryPrikormList University { get; }
-        IRepositoryMeal Subject { get; }
+        IRepositoryProduct Products { get; }
+        IRepositoryPrikormList PrikormLists { get; }
+        IRepositoryMeal Meals { get; }
         int Save();
     }
 }

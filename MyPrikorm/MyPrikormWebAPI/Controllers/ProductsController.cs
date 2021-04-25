@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyPrikormWebAPI.Repositories;
 using MyPrikormWebAPI.Model.DB.Entities;
+using NLog;
 
 namespace MyPrikormWebAPI.Controllers
 {
@@ -12,71 +13,107 @@ namespace MyPrikormWebAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private ProductRepository rep;
-
-        public ProductsController(ProductRepository rep)
+        private ProductRepository productRepository;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        public ProductsController(ProductRepository productRepository)
         {
-            this.rep = rep;
+            this.productRepository = productRepository;
         }
 
-        // GET api/product
-        //[EnableCors("AnotherPolicy")]
         [HttpGet]
         public async Task<ActionResult<List<Product>>> Get()
         {
-            return await rep.GetAll();
+            try
+            {
+                return Ok(await productRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // GET api/values/5
-        //[EnableCors("AnotherPolicy")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> Get(int id)
         {
-            Product product = await rep.Get(id);
-            if (product == null)
+            try
             {
-                return NotFound();
+                Product product = await productRepository.Get(id);
+                if (product == null)
+                {
+                    logger.Info("Product is not found: " + id + ".");
+                    return NotFound();
+                }
+
+                return Ok(product);
             }
-            return new ObjectResult(product);
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // POST api/values
-        //[EnableCors("AnotherPolicy")]
         [HttpPost]
-        public async Task<ActionResult<Product>> Post(Product product)
+        public ActionResult<Product> Post(Product product)
         {
-            if (product == null)
+            if (!ModelState.IsValid)
             {
+                logger.Info("Product ModelState is not valid.");
                 return BadRequest();
             }
 
-            return Ok(await rep.Create(product));
+            try
+            {
+                return Ok(productRepository.Create(product));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // PUT api/values/5
-        //[EnableCors("AnotherPolicy")]
         [HttpPut("{id}")]
-        public async Task<ActionResult<Product>> Put(long id, Product product)
+        public ActionResult<Product> Put(long id, Product product)
         {
-            if (product == null)
+            if (!ModelState.IsValid)
             {
+                logger.Info("Product ModelState is not valid.");
                 return BadRequest();
             }
 
-            return Ok(await rep.Update(product));
+            try
+            {
+                return Ok(productRepository.Update(product));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // DELETE api/values/5
-        //[EnableCors("AnotherPolicy")]
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Product>> Delete(int id)
+        public ActionResult<Product> Delete(int id)
         {
-            Product product = await rep.Delete(id);
-            if (product == null)
+            try
             {
-                return NotFound();
+                Product product = productRepository.Delete(id);
+                if (product == null)
+                {
+                    logger.Info("Product is not found: " + id + ".");
+                    return NotFound();
+                }
+
+                return NoContent();
             }
-            return new ObjectResult(product);
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
     }
 }

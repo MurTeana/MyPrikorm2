@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NLog;
 
 namespace MyPrikormWebAPI
@@ -18,11 +17,11 @@ namespace MyPrikormWebAPI
             try
             {
                 CreateHostBuilder(args).Build().Run();
-            }
-            catch (Exception ex)
+            } catch (Exception ex)
             {
                 logger.Error(ex);
             }
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

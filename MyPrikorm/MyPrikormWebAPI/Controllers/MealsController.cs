@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyPrikormWebAPI.Repositories;
 using MyPrikormWebAPI.Model.DB.Entities;
+using NLog;
 
 namespace MyPrikormWebAPI.Controllers
 {
@@ -12,71 +13,107 @@ namespace MyPrikormWebAPI.Controllers
     [ApiController]
     public class MealsController : ControllerBase
     {
-        private MealRepository rep;
-
-        public MealsController(MealRepository rep)
+        private MealRepository mealRepository;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        public MealsController(MealRepository mealRepository)
         {
-            this.rep = rep;
+            this.mealRepository = mealRepository;
         }
 
-        // GET api/meal
-        //[EnableCors("AnotherPolicy")]
         [HttpGet]
         public async Task<ActionResult<List<Meal>>> Get()
         {
-            return await rep.GetAll();
+            try
+            {
+                return Ok(await mealRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // GET api/values/5
-        //[EnableCors("AnotherPolicy")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Meal>> Get(int id)
         {
-            Meal meal = await rep.Get(id);
-            if (meal == null)
+            try
             {
-                return NotFound();
+                Meal meal = await mealRepository.Get(id);
+                if (meal == null)
+                {
+                    logger.Info("Meal is not found: " + id + ".");
+                    return NotFound();
+                }
+
+                return Ok(meal);
             }
-            return new ObjectResult(meal);
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // POST api/values
-        //[EnableCors("AnotherPolicy")]
         [HttpPost]
-        public async Task<ActionResult<Meal>> Post(Meal meal)
+        public ActionResult<Meal> Post(Meal meal)
         {
-            if (meal == null)
+            if (!ModelState.IsValid)
             {
+                logger.Info("Meal ModelState is not valid.");
                 return BadRequest();
             }
 
-            return Ok(await rep.Create(meal));
+            try
+            {
+                return Ok(mealRepository.Create(meal));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // PUT api/values/5
-        //[EnableCors("AnotherPolicy")]
         [HttpPut("{id}")]
-        public async Task<ActionResult<Meal>> Put(long id, Meal meal)
+        public ActionResult<Meal> Put(long id, Meal meal)
         {
-            if (meal == null)
+            if (!ModelState.IsValid)
             {
+                logger.Info("Meal ModelState is not valid.");
                 return BadRequest();
             }
 
-            return Ok(await rep.Update(meal));
+            try
+            {
+                return Ok(mealRepository.Update(meal));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
 
-        // DELETE api/values/5
-        //[EnableCors("AnotherPolicy")]
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Meal>> Delete(int id)
+        public ActionResult<Meal> Delete(int id)
         {
-            Meal meal = await rep.Delete(id);
-            if (meal == null)
+            try
             {
-                return NotFound();
+                Meal meal = mealRepository.Delete(id);
+                if (meal == null)
+                {
+                    logger.Info("Meal is not found: " + id + ".");
+                    return NotFound();
+                }
+
+                return NoContent();
             }
-            return new ObjectResult(meal);
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
         }
     }
 }

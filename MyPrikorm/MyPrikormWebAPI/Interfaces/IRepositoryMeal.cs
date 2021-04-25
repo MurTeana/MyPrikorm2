@@ -11,8 +11,8 @@ namespace MyPrikormWebAPI.Interfaces
     {
         Task<List<Meal>> GetAll();
         Task<Meal> Get(int id);
-        Task<Meal> Create(Meal meal);
-        Task<Meal> Update(Meal meal);
-        Task<Meal> Delete(int id);
+        Meal Create(Meal meal);
+        Meal Update(Meal meal);
+        Meal Delete(int id);
     }
 }

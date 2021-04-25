@@ -10,8 +10,8 @@ namespace MyPrikormWebAPI.Interfaces
     {
         Task<List<Product>> GetAll();
         Task<Product> Get(int id);
-        Task<Product> Create(Product product);
-        Task<Product> Update(Product product);
-        Task<Product> Delete(int id);
+        Product Create(Product product);
+        Product Update(Product product);
+        Product Delete(int id);
     }
 }

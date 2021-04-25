@@ -12,6 +12,7 @@ namespace MyPrikormWebAPI.Repositories
     public class MealRepository : IRepositoryMeal
     {
         private ApplicationContext db;
+
         public MealRepository(ApplicationContext context)
         {
             db = context;
@@ -27,17 +28,18 @@ namespace MyPrikormWebAPI.Repositories
             return await db.Meals.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Meal> Create(Meal meal)
+        public Meal Create(Meal meal)
         {
             if (meal != null)
             {
                 db.Meals.Add(meal);
-                await db.SaveChangesAsync();
+                Save();
             }
+
             return meal;
         }
 
-        public async Task<Meal> Update(Meal meal)
+        public Meal Update(Meal meal)
         {
             if (!db.Meals.Any(x => x.Id == meal.Id))
             {
@@ -45,11 +47,11 @@ namespace MyPrikormWebAPI.Repositories
             }
 
             db.Update(meal);
-            await db.SaveChangesAsync();
+            Save();
             return meal;
         }
 
-        public async Task<Meal> Delete(int id)
+        public Meal Delete(int id)
         {
             Meal meal = db.Meals.FirstOrDefault(x => x.Id == id);
             if (meal == null)
@@ -58,8 +60,13 @@ namespace MyPrikormWebAPI.Repositories
             }
 
             db.Meals.Remove(meal);
-            await db.SaveChangesAsync();
+            Save();
             return meal;
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
         }
     }
 }

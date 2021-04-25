@@ -27,9 +27,9 @@ namespace MyPrikormWebAPI
 
             // link controllers with repositories
             services.AddScoped<UserRepository>();
-            //services.AddScoped<ProductRepository>();
-            //services.AddScoped<PrikormListRepository>();
-            //services.AddScoped<MealRepository>();
+            services.AddScoped<ProductRepository>();
+            services.AddScoped<PrikormListRepository>();
+            services.AddScoped<MealRepository>();
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
@@ -39,7 +39,6 @@ namespace MyPrikormWebAPI
             }));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
