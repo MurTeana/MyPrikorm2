@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyPrikormWebAPI.DB.Entities;
+using MyPrikormWebAPI.Model.DB.Entities;
+using MyPrikormWebAPI.Model.DB.Context;
 
 namespace MyPrikormWebAPI.Interfaces
 {
@@ -10,8 +11,8 @@ namespace MyPrikormWebAPI.Interfaces
     {
         Task<List<PrikormList>> GetAll();
         Task<PrikormList> Get(int id);
-        Task<PrikormList> Create(PrikormList prikormlist);
-        Task<PrikormList> Update(PrikormList prikormlist);
-        Task<PrikormList> Delete(int id);
+        PrikormList Create(PrikormList prikormlist);
+        PrikormList Update(PrikormList prikormlist);
+        PrikormList Delete(int id);
     }
 }

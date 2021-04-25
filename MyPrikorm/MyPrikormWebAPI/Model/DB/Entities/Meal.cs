@@ -4,20 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using MyPrikormWebAPI.DB.Entities;
 
-namespace MyPrikormWebAPI.DB.Entities
+
+namespace MyPrikormWebAPI.Model.DB.Entities
 {
-    public class Product
+    public class Meal
     {
-        public Product()
+        public Meal()
         {
             PrikormList = new HashSet<PrikormList>();
         }
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Product_ { get; set; }
+        public string Meal_ { get; set; }
 
         //public virtual ChildName ChildName { get; set; }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyPrikormWebAPI.DB.Entities;
+using MyPrikormWebAPI.Model.DB.Entities;
 
 
 namespace MyPrikormWebAPI.Interfaces

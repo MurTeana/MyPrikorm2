@@ -71,3 +71,6 @@ D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MySqlCon
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csproj.CoreCompileInputs.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

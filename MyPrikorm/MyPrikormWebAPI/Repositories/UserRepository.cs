@@ -4,14 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyPrikormWebAPI.Interfaces;
-using MyPrikormWebAPI.DB.Context;
-using MyPrikormWebAPI.DB.Entities;
+using MyPrikormWebAPI.Model.DB.Context;
+using MyPrikormWebAPI.Model.DB.Entities;
 
 namespace MyPrikormWebAPI.Repositories
 {
     public class UserRepository : IRepositoryUser
     {
         private ApplicationContext db;
+
         public UserRepository(ApplicationContext context)
         {
             db = context;
@@ -27,17 +28,18 @@ namespace MyPrikormWebAPI.Repositories
             return await db.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<User> Create(User user)
+        public User Create(User user)
         {
             if (user != null)
             {
                 db.Users.Add(user);
-                await db.SaveChangesAsync();
+                Save();
             }
+
             return user;
         }
 
-        public async Task<User> Update(User user)
+        public User Update(User user)
         {
             if (!db.Users.Any(x => x.Id == user.Id))
             {
@@ -45,11 +47,11 @@ namespace MyPrikormWebAPI.Repositories
             }
 
             db.Update(user);
-            await db.SaveChangesAsync();
+            Save();
             return user;
         }
 
-        public async Task<User> Delete(int id)
+        public User Delete(int id)
         {
             User user = db.Users.FirstOrDefault(x => x.Id == id);
             if (user == null)
@@ -58,8 +60,13 @@ namespace MyPrikormWebAPI.Repositories
             }
 
             db.Users.Remove(user);
-            await db.SaveChangesAsync();
+            Save();
             return user;
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
         }
     }
 }

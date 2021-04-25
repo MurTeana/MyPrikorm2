@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using MyPrikormWebAPI.DB.Entities;
 
-namespace MyPrikormWebAPI.DB.Entities
+namespace MyPrikormWebAPI.Model.DB.Entities
 {
     public class PrikormList
     {
@@ -24,8 +23,8 @@ namespace MyPrikormWebAPI.DB.Entities
         public int Weight { get; set; }
         public string Reaction { get; set; }
 
-        //public virtual ChildName ChildName { get; set; }
 
+        public virtual User User { get; set; }
         public virtual ICollection<PrikormList> PrikormList_ { get; set; }
     }
 }

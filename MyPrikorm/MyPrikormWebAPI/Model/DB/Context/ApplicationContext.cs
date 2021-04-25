@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
-using MyPrikormWebAPI.DB.Entities;
+using MyPrikormWebAPI.Model.DB.Entities;
 
 
-namespace MyPrikormWebAPI.DB.Context
+namespace MyPrikormWebAPI.Model.DB.Context
 {
     public class ApplicationContext : DbContext
     {
@@ -24,10 +24,10 @@ namespace MyPrikormWebAPI.DB.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<User>()
-            //    .HasMany(e => e.PrikormList)
-            //    .WithOne(e => e.User)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.PrikormList)
+                .WithOne(e => e.User)
+                .OnDelete(DeleteBehavior.Cascade);
 
             //modelBuilder.Entity<Product>()
             //    .HasMany(e => e.PrikormList)

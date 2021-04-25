@@ -4,23 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using MyPrikormWebAPI.DB.Entities;
 
-
-namespace MyPrikormWebAPI.DB.Entities
+namespace MyPrikormWebAPI.Model.DB.Entities
 {
-    public class Meal
+    public class User
     {
-        public Meal()
+        public User()
         {
             PrikormList = new HashSet<PrikormList>();
         }
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Meal_ { get; set; }
-
-        //public virtual ChildName ChildName { get; set; }
+        public string Username { get; set; }
+        public string ChildName { get; set; }
+        public string Password { get; set; }
 
         public virtual ICollection<PrikormList> PrikormList { get; set; }
     }

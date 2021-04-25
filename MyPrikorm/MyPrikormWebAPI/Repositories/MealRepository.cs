@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyPrikormWebAPI.Interfaces;
-using MyPrikormWebAPI.DB.Context;
-using MyPrikormWebAPI.DB.Entities;
+using MyPrikormWebAPI.Model.DB.Context;
+using MyPrikormWebAPI.Model.DB.Entities;
 
 namespace MyPrikormWebAPI.Repositories
 {

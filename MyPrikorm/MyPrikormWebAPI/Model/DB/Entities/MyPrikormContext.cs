@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyPrikormWebAPI.DB.Entities
+namespace MyPrikormWebAPI.Model.DB.Entities
 {
     public partial class MyPrikormContext : DbContext
     {

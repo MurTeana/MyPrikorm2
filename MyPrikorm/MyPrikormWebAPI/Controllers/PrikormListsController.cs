@@ -11,21 +11,21 @@ namespace MyPrikormWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class PrikormListsController : ControllerBase
     {
-        private UserRepository userRepository;
+        private PrikormListRepository prikormlistRepository;
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        public UsersController(UserRepository userRepository)
+        public PrikormListsController(PrikormListRepository prikormlistRepository)
         {
-            this.userRepository = userRepository;
+            this.prikormlistRepository = prikormlistRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<User>>> Get()
+        public async Task<ActionResult<List<PrikormList>>> Get()
         {
             try
             {
-                return Ok(await userRepository.GetAll());
+                return Ok(await prikormlistRepository.GetAll());
             }
             catch (Exception ex)
             {
@@ -35,18 +35,18 @@ namespace MyPrikormWebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> Get(int id)
+        public async Task<ActionResult<PrikormList>> Get(int id)
         {
             try
             {
-                User user = await userRepository.Get(id);
-                if (user == null)
+                PrikormList prikormlist = await prikormlistRepository.Get(id);
+                if (prikormlist == null)
                 {
-                    logger.Info("User is not found: " + id + ".");
+                    logger.Info("PrikormList is not found: " + id + ".");
                     return NotFound();
                 }
 
-                return Ok(user);
+                return Ok(prikormlist);
             }
             catch (Exception ex)
             {
@@ -56,17 +56,17 @@ namespace MyPrikormWebAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<User> Post(User user)
+        public ActionResult<PrikormList> Post(PrikormList prikormlist)
         {
             if (!ModelState.IsValid)
             {
-                logger.Info("User ModelState is not valid.");
+                logger.Info("PrikormList ModelState is not valid.");
                 return BadRequest();
             }
 
             try
             {
-                return Ok(userRepository.Create(user));
+                return Ok(prikormlistRepository.Create(prikormlist));
             }
             catch (Exception ex)
             {
@@ -76,17 +76,17 @@ namespace MyPrikormWebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<User> Put(long id, User user)
+        public ActionResult<PrikormList> Put(long id, PrikormList prikormlist)
         {
             if (!ModelState.IsValid)
             {
-                logger.Info("User ModelState is not valid.");
+                logger.Info("PrikormList ModelState is not valid.");
                 return BadRequest();
             }
 
             try
             {
-                return Ok(userRepository.Update(user));
+                return Ok(prikormlistRepository.Update(prikormlist));
             }
             catch (Exception ex)
             {
@@ -96,14 +96,14 @@ namespace MyPrikormWebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<User> Delete(int id)
+        public ActionResult<PrikormList> Delete(int id)
         {
             try
             {
-                User user = userRepository.Delete(id);
-                if (user == null)
+                PrikormList prikormlist = prikormlistRepository.Delete(id);
+                if (prikormlist == null)
                 {
-                    logger.Info("User is not found: " + id + ".");
+                    logger.Info("PrikormList is not found: " + id + ".");
                     return NotFound();
                 }
 

@@ -4,14 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyPrikormWebAPI.Interfaces;
-using MyPrikormWebAPI.DB.Context;
-using MyPrikormWebAPI.DB.Entities;
+using MyPrikormWebAPI.Model.DB.Context;
+using MyPrikormWebAPI.Model.DB.Entities;
 
 namespace MyPrikormWebAPI.Repositories
 {
     public class PrikormListRepository : IRepositoryPrikormList
     {
         private ApplicationContext db;
+
         public PrikormListRepository(ApplicationContext context)
         {
             db = context;
@@ -27,39 +28,45 @@ namespace MyPrikormWebAPI.Repositories
             return await db.PrikormLists.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<PrikormList> Create(PrikormList prikormlist)
+        public PrikormList Create(PrikormList prikormList)
         {
-            if (prikormlist != null)
+            if (prikormList != null)
             {
-                db.PrikormLists.Add(prikormlist);
-                await db.SaveChangesAsync();
+                db.PrikormLists.Add(prikormList);
+                Save();
             }
-            return prikormlist;
+
+            return prikormList;
         }
 
-        public async Task<PrikormList> Update(PrikormList prikormlist)
+        public PrikormList Update(PrikormList prikormList)
         {
-            if (!db.PrikormLists.Any(x => x.Id == prikormlist.Id))
+            if (!db.PrikormLists.Any(x => x.Id == prikormList.Id))
             {
                 return null;
             }
 
-            db.Update(prikormlist);
-            await db.SaveChangesAsync();
-            return prikormlist;
+            db.Update(prikormList);
+            Save();
+            return prikormList;
         }
 
-        public async Task<PrikormList> Delete(int id)
+        public PrikormList Delete(int id)
         {
-            PrikormList prikormlist = db.PrikormLists.FirstOrDefault(x => x.Id == id);
-            if (prikormlist == null)
+            PrikormList prikormList = db.PrikormLists.FirstOrDefault(x => x.Id == id);
+            if (prikormList == null)
             {
-                return prikormlist;
+                return prikormList;
             }
 
-            db.PrikormLists.Remove(prikormlist);
-            await db.SaveChangesAsync();
-            return prikormlist;
+            db.PrikormLists.Remove(prikormList);
+            Save();
+            return prikormList;
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
         }
     }
 }
