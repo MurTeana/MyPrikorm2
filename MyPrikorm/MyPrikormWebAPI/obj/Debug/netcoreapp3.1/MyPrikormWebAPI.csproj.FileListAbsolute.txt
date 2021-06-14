@@ -34,7 +34,6 @@ C:\Users\St.Eva\Desktop\Projects С#\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcore
 C:\Users\St.Eva\Desktop\Projects С#\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csproj.CopyComplete
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.exe
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.deps.json
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\MyPrikormWebAPI.runtimeconfig.json
@@ -78,3 +77,4 @@ D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsof
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csprojAssemblyReference.cache
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\MyPrikormWebAPI.styles.css

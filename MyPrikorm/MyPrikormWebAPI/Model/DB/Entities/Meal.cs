@@ -19,8 +19,6 @@ namespace MyPrikormWebAPI.Model.DB.Entities
         [Required]
         public string Meal_ { get; set; }
 
-        //public virtual ChildName ChildName { get; set; }
-
         public virtual ICollection<PrikormList> PrikormList { get; set; }
     }
 }
