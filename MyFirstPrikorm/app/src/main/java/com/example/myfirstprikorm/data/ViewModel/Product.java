@@ -1,15 +1,15 @@
 package com.example.myfirstprikorm.data.ViewModel;
 
 public class Product {
-    private int id;
+    private Integer id;
     private String product_;
+
+    public Product(String product_) {
+        this.product_ = product_;
+    }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        id = id;
     }
 
     public String getProduct() {
@@ -19,4 +19,6 @@ public class Product {
     public void setProduct(String product) {
         product_ = product;
     }
+
+
 }

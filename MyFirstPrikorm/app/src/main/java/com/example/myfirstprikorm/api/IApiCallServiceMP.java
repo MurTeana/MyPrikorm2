@@ -18,5 +18,5 @@ public interface IApiCallServiceMP {
     Call<List<Product>> getProducts();
 
     @POST("/api/Products")
-    Call<Product> addProduct(@Body Product product);
+    Call<Product> createProduct(@Body Product product);
 }

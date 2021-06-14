@@ -104,7 +104,37 @@ public class ApiRequestsMP {
         return result;
     }
     // POST STRING PRODUCTS
+    public String[] PostProductListString(IApiCallServiceMP iApiCallServiceMP) {
+        leng = 10;
+        result = new String[leng];
 
+        Call<List<Product>> call = iApiCallServiceMP.getProducts();
+
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(context, "Что-то пошло не так! Код: " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Product> products = response.body();
+
+                int i = 0;
+                for (Product product:products){
+                    String content = "";
+                    content = product.getProduct();
+                    result[i] = content;
+                    i++;
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return result;
+    }
 
     //
 

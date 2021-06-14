@@ -32,7 +32,7 @@ public class TestProductsFragment extends Fragment {
 
     ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
     IApiCallServiceMP iApiCallServiceMPMyPrikorm = apiRequestsMP_.jsonPlaceHolderApiCallServiceMyPrikorm();
-    textViewResult = apiRequestsMP_.AddProductList(iApiCallServiceMPMyPrikorm, textViewResult);
+    //textViewResult = apiRequestsMP_.AddProductList(iApiCallServiceMPMyPrikorm, textViewResult);
 
     final String[] result = apiRequestsMP_.AddProductListString(iApiCallServiceMPMyPrikorm);
     arrayAdapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,result);
