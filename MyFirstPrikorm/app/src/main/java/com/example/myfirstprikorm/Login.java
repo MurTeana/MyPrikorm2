@@ -23,7 +23,6 @@ public class Login extends AppCompatActivity {
     Button callSignUp, login_btn;
     TextInputLayout username, password;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,7 +1,11 @@
 package com.example.myfirstprikorm.data.ViewModel;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
     private Integer id;
+
+    //@SerializedName("body")
     private String product_;
 
     public Product(String product_) {

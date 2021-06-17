@@ -86,6 +86,7 @@ public class Addmeal extends AppCompatActivity {
         databaseReference2=FirebaseDatabase.getInstance().getReference("products");
         addProdfrSp = findViewById(R.id.prodspinner);
         adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,arrayList);
+
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addProdfrSp.setAdapter(adapter2);
 

@@ -21,8 +21,16 @@
             android:icon="@android:drawable/ic_menu_myplaces"
             android:title="@string/menu_userprofile" />
         <item
-            android:id="@+id/nav_test_products"
+            android:id="@+id/nav_t_products"
             android:icon="@android:drawable/ic_input_add"
             android:title="@string/menu_products" />
+        <item
+            android:id="@+id/nav_t_mylist"
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="@string/menu_mylist" />
+        <item
+            android:id="@+id/nav_t_userprofile"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/menu_userprofile" />
     </group>
 </menu>

@@ -10,7 +10,6 @@
         android:name="com.example.myfirstprikorm.ui.mymenu.MymenuFragment"
         android:label="@string/menu_mylist"
         tools:layout="@layout/fragment_mymenu"/>
-
     <fragment
         android:id="@+id/nav_products"
         android:name="com.example.myfirstprikorm.ui.products.ProductsFragment"
@@ -27,8 +26,18 @@
         android:label="@string/menu_userprofile"
         tools:layout="@layout/fragment_userprofile"/>
     <fragment
-        android:id="@+id/nav_test_products"
-        android:name="com.example.myfirstprikorm.ui.testproducts.TestProductsFragment"
+        android:id="@+id/nav_t_products"
+        android:name="com.example.myfirstprikorm.ui.tproducts.TProductsFragment"
         android:label="@string/menu_products"
-        tools:layout="@layout/activity_test"/>
+        tools:layout="@layout/fragment_products"/>
+    <fragment
+        android:id="@+id/nav_t_mylist"
+        android:name="com.example.myfirstprikorm.ui.tmymenu.TMymenuFragment"
+        android:label="@string/menu_mylist"
+        tools:layout="@layout/fragment_mymenu"/>
+    <fragment
+        android:id="@+id/nav_t_userprofile"
+        android:name="com.example.myfirstprikorm.ui.tuserprofile.TUserProfileFragment"
+        android:label="@string/menu_userprofile"
+        tools:layout="@layout/fragment_userprofile"/>
 </navigation>

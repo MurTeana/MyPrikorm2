@@ -20,6 +20,9 @@
         <activity android:name=".Login" />
         <activity android:name=".Dashboard" />
         <activity android:name=".TestActivity" />
+        <activity android:name=".TAddmeal" />
+        <activity android:name=".TSignUp" />
+        <activity android:name=".TLogin" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

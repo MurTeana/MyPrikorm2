@@ -33,7 +33,7 @@ public class Dashboard extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_products, R.id.nav_products, R.id.nav_articles, R.id.nav_mylist, R.id.nav_userprofile, R.id.nav_test_products)
+                R.id.nav_products, R.id.nav_products, R.id.nav_articles, R.id.nav_mylist, R.id.nav_userprofile, R.id.nav_t_products,R.id.nav_t_mylist,R.id.nav_t_userprofile)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
