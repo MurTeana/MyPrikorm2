@@ -12,11 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.myfirstprikorm.Addmeal;
 import com.example.myfirstprikorm.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class UserProfileFragment extends Fragment {
 
@@ -26,13 +23,9 @@ public class UserProfileFragment extends Fragment {
     Button changeData_btn;
     String _NAME, _CHILDNAME, _EMAIL, _PASSWORD, _PHONENO;
 
-    DatabaseReference reference;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
     ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_userprofile,container, false);
-
-    reference = FirebaseDatabase.getInstance().getReference("users");
 
     //Hooks
         username = root.findViewById(R.id.name);
@@ -85,7 +78,7 @@ public class UserProfileFragment extends Fragment {
 
     private boolean isChildNameChanged() {
         if (!_CHILDNAME.equals(childname.getEditText().getText().toString())){
-            reference.child(_NAME).child("childname").setValue(childname.getEditText().getText().toString());
+            //reference.child(_NAME).child("childname").setValue(childname.getEditText().getText().toString());
             return true;
         } else {
             return false;
@@ -94,7 +87,7 @@ public class UserProfileFragment extends Fragment {
 
     private boolean isEmailChanged() {
         if (!_EMAIL.equals(email.getEditText().getText().toString())){
-            reference.child(_NAME).child("email").setValue(email.getEditText().getText().toString());
+            //reference.child(_NAME).child("email").setValue(email.getEditText().getText().toString());
             return true;
         } else {
             return false;
@@ -103,7 +96,7 @@ public class UserProfileFragment extends Fragment {
 
     private boolean isPasswordChanged() {
         if (!_PASSWORD.equals(password.getEditText().getText().toString())){
-            reference.child(_NAME).child("password").setValue(password.getEditText().getText().toString());
+            //reference.child(_NAME).child("password").setValue(password.getEditText().getText().toString());
             return true;
         } else {
             return false;
@@ -112,7 +105,7 @@ public class UserProfileFragment extends Fragment {
 
     private boolean isPhoneNoChanged() {
         if (!_PHONENO.equals(phoneno.getEditText().getText().toString())){
-            reference.child(_NAME).child("phoneno").setValue(phoneno.getEditText().getText().toString());
+            //reference.child(_NAME).child("phoneno").setValue(phoneno.getEditText().getText().toString());
             return true;
         } else {
             return false;

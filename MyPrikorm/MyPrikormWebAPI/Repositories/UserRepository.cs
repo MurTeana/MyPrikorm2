@@ -9,7 +9,7 @@ using MyPrikormWebAPI.Model.DB.Entities;
 
 namespace MyPrikormWebAPI.Repositories
 {
-    public class UserRepository : IRepositoryUser
+    public class UserRepository 
     {
         private ApplicationContext db;
 
@@ -27,6 +27,23 @@ namespace MyPrikormWebAPI.Repositories
         {
             return await db.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<User> GetByUsername(string username)
+        {
+            return await db.Users.FirstOrDefaultAsync(x => x.Username == username);
+        }
+
+        public async Task<User> Authenticate(string username, string password)
+        {
+            var user = await Task.Run(() => db.Users.SingleOrDefault(x => x.Username == username && x.Password == password));
+
+            if (user == null)
+                return null;
+
+            return user;
+            // return user.WithoutPassword();
+        }
+
 
         public User Create(User user)
         {

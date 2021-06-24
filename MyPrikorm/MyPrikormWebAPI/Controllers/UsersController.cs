@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MyPrikormWebAPI.Repositories;
 using MyPrikormWebAPI.Model.DB.Entities;
 using NLog;
@@ -34,7 +35,7 @@ namespace MyPrikormWebAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<User>> Get(int id)
         {
             try
@@ -43,6 +44,27 @@ namespace MyPrikormWebAPI.Controllers
                 if (user == null)
                 {
                     logger.Info("User is not found: " + id + ".");
+                    return NotFound();
+                }
+
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult<User>> Get(string username)
+        {
+            try
+            {
+                User user = await userRepository.GetByUsername(username);
+                if (user == null)
+                {
+                    logger.Info("User is not found: " + username + ".");
                     return NotFound();
                 }
 
@@ -93,6 +115,18 @@ namespace MyPrikormWebAPI.Controllers
                 logger.Error(ex);
                 return BadRequest(ex);
             }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> Authenticate([FromBody] LoginRequest model)
+        {
+            var user = await userRepository.Authenticate(model.Username, model.Password);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(user);
         }
 
         [HttpDelete("{id}")]

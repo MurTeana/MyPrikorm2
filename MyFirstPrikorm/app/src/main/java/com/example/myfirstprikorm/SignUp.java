@@ -1,24 +1,21 @@
 package com.example.myfirstprikorm;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myfirstprikorm.api.ApiRequestsMP;
+import com.example.myfirstprikorm.api.IApiCallServiceMP;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class SignUp extends AppCompatActivity {
 
     TextInputLayout regName, regChildname, regEmail, regPhoneno, regPassword;
     Button regBtn, regToLoginBtn;
-
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +31,6 @@ public class SignUp extends AppCompatActivity {
         regPhoneno = findViewById(R.id.regPhoneno);
         regBtn = findViewById(R.id.regBtn);
         regToLoginBtn = findViewById(R.id.regToLoginBtn);
-
-        rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("users");
     }
 
     private  Boolean validateName(){
@@ -119,20 +113,20 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    //Save data in Firebase on button click
+    //Save data in database on button click
     public void registerUser(View view) {
+        ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
         if(!validateName() | !validateChildname() | !validateEmail() | !validatePhoneno() | !validatePassword()) {
             return;
         }
-
         //Get all values in Strings
         String name=regName.getEditText().getText().toString();
         String childname=regChildname.getEditText().getText().toString();
         String email=regEmail.getEditText().getText().toString();
         String phoneno=regPhoneno.getEditText().getText().toString();
         String password=regPassword.getEditText().getText().toString();
-        UserHelperClass helperClass = new UserHelperClass(name, childname, email, phoneno, password);
-        reference.child(name).setValue(helperClass);
+
+        apiRequestsMP_.POSTUsers(name, childname, password, email, phoneno);
 
         Toast.makeText(this, "Вы успешно зарегистрированы!", Toast.LENGTH_LONG).show();
     }

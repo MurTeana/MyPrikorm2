@@ -1,4 +1,4 @@
-package com.example.myfirstprikorm.data.ViewModel;
+package com.example.myfirstprikorm.model;
 
 public class PrikormList {
     private Integer id;

@@ -1,10 +1,5 @@
 package com.example.myfirstprikorm;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -13,39 +8,38 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import com.example.myfirstprikorm.ui.mymenu.MymenuFragment;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myfirstprikorm.api.ApiRequestsMP;
+import com.example.myfirstprikorm.api.IApiCallServiceMP;
 import com.example.myfirstprikorm.ui.mymenu.MymenuViewModel;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import retrofit2.Retrofit;
+
+import static java.lang.Integer.parseInt;
 
 public class Addmeal extends AppCompatActivity {
 
     TextInputLayout addValue;
     Button addMenuBtn;
     Spinner addMealfrSp,addProdfrSp;
-    EditText addData;
+    EditText addData, addUserId;
     String[] data = {"Завтрак", "Обед","Полдник","Ужин"};
 
-    DatabaseReference databaseReference,databaseReference2;
-    ArrayList<String> arrayList=new ArrayList<>();
-    ArrayAdapter<String> adapter2;
+    ArrayList<String> arrayProductsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,23 +48,23 @@ public class Addmeal extends AppCompatActivity {
 
         addData = findViewById(R.id.date_time_input);
         addValue = findViewById(R.id.addValue);
+        addUserId = findViewById(R.id.userIdEdT);
         addMenuBtn = findViewById(R.id.addMenuBtn);
 
         addData.setInputType(InputType.TYPE_NULL);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("mymenu");
-
         addData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDateTameDialog(addData);
+                showDateTimeDialog(addData);
             }
         });
-
+// Meal
         addMealfrSp = findViewById(R.id.mealspinner);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,data);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        addMealfrSp.setAdapter(adapter1);
+
+        ArrayAdapter<String> adapterMeal = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,data);
+        adapterMeal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        addMealfrSp.setAdapter(adapterMeal);
         addMealfrSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -82,43 +76,15 @@ public class Addmeal extends AppCompatActivity {
 
             }
         });
-
-        databaseReference2=FirebaseDatabase.getInstance().getReference("products");
+// Product
         addProdfrSp = findViewById(R.id.prodspinner);
-        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,arrayList);
 
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        addProdfrSp.setAdapter(adapter2);
+        ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
+        String[] products_res = apiRequestsMP_.GETProducts();
 
-        databaseReference2.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String value = snapshot.getValue(UserHelperClassProd.class).toString();
-                arrayList.add(value);
-                adapter2.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        ArrayAdapter<String> adapterProducts = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,products_res);
+        adapterProducts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        addProdfrSp.setAdapter(adapterProducts);
         addProdfrSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -130,9 +96,17 @@ public class Addmeal extends AppCompatActivity {
 
             }
         });
-    }
 
-    private void showDateTameDialog(final EditText date_time_in) {
+        addMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addMenuToDB(view);
+            }
+        });
+
+    }
+// Date Time
+    private void showDateTimeDialog(final EditText date_time_in) {
         final Calendar calendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -158,46 +132,57 @@ public class Addmeal extends AppCompatActivity {
         };
         new DatePickerDialog(Addmeal.this, dateSetListener,calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
+// Validate
+    private  Boolean validateData(){
+        String val=addData.getText().toString();
 
-        private  Boolean validateData(){
-            String val=addData.getText().toString();
-
-            if(val.isEmpty()){
-                addData.setError("Поле не может быть пустым");
-                return false;
-            } else {
-                addData.setError(null);
-                return true;
-            }
+        if(val.isEmpty()){
+            addData.setError("Поле не может быть пустым");
+            return false;
+        } else {
+            addData.setError(null);
+            return true;
         }
+    }
 
-        private  Boolean validateValue(){
-            String val=addValue.getEditText().getText().toString();
+    private  Boolean validateValue(){
+        String val=addValue.getEditText().getText().toString();
 
-            if(val.isEmpty()){
-                addValue.setError("Поле не может быть пустым");
-                return false;
-            } else {
-                addValue.setError(null);
-                addValue.setErrorEnabled(false);
-                return true;
-            }
+        if(val.isEmpty()){
+            addValue.setError("Поле не может быть пустым");
+            return false;
+        } else {
+            addValue.setError(null);
+            addValue.setErrorEnabled(false);
+            return true;
         }
-
-        public void addMenuToDB(View view) {
-            if(!validateData() | !validateValue() ) {
-                return;
-            }
-            //Get all values in Strings
-            String data=addData.getText().toString();
-            String meal=addMealfrSp.getSelectedItem().toString();
-            String product=addProdfrSp.getSelectedItem().toString();
-            String value=addValue.getEditText().getText().toString();
-
-            UserHelperClassMenu helperClass = new UserHelperClassMenu(data,meal,product,value);
-            databaseReference.child(data).setValue(helperClass);
-
-            Intent intent = new Intent(Addmeal.this, MymenuViewModel.class);
-            startActivity(intent);
+    }
+// AddMenu
+    public void addMenuToDB(View view) {
+        if(!validateData() | !validateValue() ) {
+            return;
         }
+        //Get all values in Strings
+        int idUser = 1;//getUserId()
+        String dateMeal = addData.getText().toString();
+        String meal = addMealfrSp.getSelectedItem().toString();
+        String product = addProdfrSp.getSelectedItem().toString();
+        int weight = parseInt(addValue.getEditText().getText().toString());
+        String reaction = "-";
+
+        ArrayAdapter<String> arrayAdapter;
+
+        ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
+        apiRequestsMP_.POSTPrikormLists(idUser, dateMeal, meal, product, weight, reaction);
+
+        Intent intent = new Intent(Addmeal.this, MymenuViewModel.class);
+        startActivity(intent);
+    }
+
+    private void getUserId_() {
+//        Intent intent = getIntent();
+//        String userId = intent.getStringExtra("id");
+//        addUserId.setText(userId);
+    }
+
 }

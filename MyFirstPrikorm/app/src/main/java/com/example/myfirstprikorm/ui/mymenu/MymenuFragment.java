@@ -10,27 +10,18 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.myfirstprikorm.Addmeal;
 import com.example.myfirstprikorm.R;
-import com.example.myfirstprikorm.UserHelperClassMenu;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
+import com.example.myfirstprikorm.Addmeal;
+import com.example.myfirstprikorm.api.ApiRequestsMP;
+import com.example.myfirstprikorm.api.IApiCallServiceMP;
 
 public class MymenuFragment extends Fragment {
 
-    private ListView listView;
+    private ListView listViewResult;
     Button addMealBtn;
 
-    DatabaseReference databaseReference;
-    ArrayList<String> arrayList=new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
 
     @Override
@@ -38,11 +29,13 @@ public class MymenuFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_mymenu,container, false);
 
         addMealBtn = root.findViewById(R.id.addMealBtn);
+        listViewResult = root.findViewById(R.id.listView_menu);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("mymenu");
-        listView=(ListView) root.findViewById(R.id.listView_menu);
-        arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,arrayList);
-        listView.setAdapter(arrayAdapter);
+        ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
+
+        final String[] result = apiRequestsMP_.GETPrikormLists();
+        arrayAdapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,result);
+        listViewResult.setAdapter(arrayAdapter);
 
         addMealBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,36 +44,6 @@ public class MymenuFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        databaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String value = snapshot.getValue(UserHelperClassMenu.class).toString();
-                arrayList.add(value);
-                arrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
 
         return root;
     }

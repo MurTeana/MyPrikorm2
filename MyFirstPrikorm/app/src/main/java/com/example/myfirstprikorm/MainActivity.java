@@ -11,7 +11,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN = 5000;
 
@@ -33,15 +32,14 @@ public class MainActivity extends AppCompatActivity {
         image = findViewById(R.id.imageView);
         logo = findViewById(R.id.textView_splash);
 
-
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Login.class // Dashboard
-                Intent intent = new Intent(MainActivity.this, TLogin.class);
+                //TLogin.class
+                Intent intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
                 finish();
             }

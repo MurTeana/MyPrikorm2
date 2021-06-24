@@ -1,8 +1,7 @@
 package com.example.myfirstprikorm.api;
-import com.example.myfirstprikorm.data.ViewModel.Post;
-import com.example.myfirstprikorm.data.ViewModel.PrikormList;
-import com.example.myfirstprikorm.data.ViewModel.Product;
-import com.example.myfirstprikorm.data.ViewModel.User;
+import com.example.myfirstprikorm.model.PrikormList;
+import com.example.myfirstprikorm.model.Product;
+import com.example.myfirstprikorm.model.User;
 
 import java.util.List;
 
@@ -10,6 +9,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface IApiCallServiceMP {
 //    @GET("posts")
@@ -22,6 +23,14 @@ public interface IApiCallServiceMP {
 
     @GET("/api/Users")
     Call<List<User>> getUsers();
+
+    @GET("/api/Users/{id}")
+    Call<List<User>> getUsersById(@Path("id") int groupId);
+
+//    @GET("/api/Users/{username}")
+//    Call<List<User>> getUsersByUsername(@Path("username") String username);
+    @GET("/api/Users")
+    Call<List<User>> getUsersByUsername(@Query("username") String username);
 
     @POST("/api/Users")
     Call<User> createUser(@Body User user);

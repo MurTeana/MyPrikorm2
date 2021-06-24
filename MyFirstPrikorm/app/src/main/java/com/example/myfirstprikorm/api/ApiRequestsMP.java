@@ -1,11 +1,14 @@
 package com.example.myfirstprikorm.api;
 
-import com.example.myfirstprikorm.data.ViewModel.PrikormList;
-import com.example.myfirstprikorm.data.ViewModel.Product;
-import com.example.myfirstprikorm.data.ViewModel.User;
+import com.example.myfirstprikorm.model.PrikormList;
+import com.example.myfirstprikorm.model.Product;
+import com.example.myfirstprikorm.model.User;
+import com.example.myfirstprikorm.api.login.UserService;
 
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -20,24 +23,32 @@ public class ApiRequestsMP {
 
     private Context context;
 
-    //IApiCallServiceMP
-    public IApiCallServiceMP _ApiCallServiceMP() {
+    public Retrofit getRetrofit(){
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.2:45455")
                 .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("http://192.168.1.2:45455")
+                .client(okHttpClient)
                 .build();
 
-        IApiCallServiceMP iApiCallServiceMP = retrofit.create(IApiCallServiceMP.class);
-
-        return iApiCallServiceMP;
+        return retrofit;
     }
-    // GET STRING PRODUCTS
-    public String[] GETProducts(IApiCallServiceMP iApiCallServiceMP) {
+    // Service
+    public IApiCallServiceMP getCallService(){
+        IApiCallServiceMP callService = getRetrofit().create(IApiCallServiceMP.class);
+        return callService;
+    }
+
+    // GET PRODUCTS
+    public String[] GETProducts() {
         String[] result;
         int leng = 100;
         result = new String[leng];
 
-        Call<List<Product>> call = iApiCallServiceMP.getProducts();
+        Call<List<Product>> call = getCallService().getProducts();
 
         call.enqueue(new Callback<List<Product>>() {
             @Override
@@ -46,15 +57,16 @@ public class ApiRequestsMP {
                     Toast.makeText(context, "Что-то пошло не так! Код: " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                     return;
                 }
+                else{
+                    List<Product> products = response.body();
 
-                List<Product> products = response.body();
-                //int leng1 = products.size();
-                int i = 0;
-                for (Product product:products){
-                    String content = "";
-                    content = product.getProduct();
-                    result[i] = content;
-                    i++;
+                    int i = 0;
+                    for (Product product:products){
+                        String content = "";
+                        content = product.getProduct();
+                        result[i] = content;
+                        i++;
+                     }
                 }
             }
             @Override
@@ -64,12 +76,12 @@ public class ApiRequestsMP {
         });
         return result;
     }
-    // POST STRING PRODUCTS
-    public void POSTProduct(IApiCallServiceMP iApiCallServiceMP, String productToAdd) {
+    // POST PRODUCTS
+    public void POSTProduct(String productToAdd) {
 
         Product product = new Product(productToAdd);
 
-        Call<Product> call = iApiCallServiceMP.createProduct(product);
+        Call<Product> call = getCallService().createProduct(product);
 
         call.enqueue(new Callback<Product>() {
             @Override
@@ -87,13 +99,14 @@ public class ApiRequestsMP {
             }
         });
     }
-    // GET STRING PRIKORMLISTS
-    public String[] GETPrikormLists(IApiCallServiceMP iApiCallServiceMP) {
+
+    // GET PRIKORMLISTS
+    public String[] GETPrikormLists() {
         String[] result;
         int leng = 100;
         result = new String[leng];
 
-        Call<List<PrikormList>> call = iApiCallServiceMP.getPrikormLists();
+        Call<List<PrikormList>> call = getCallService().getPrikormLists();
 
         call.enqueue(new Callback<List<PrikormList>>() {
             @Override
@@ -124,12 +137,12 @@ public class ApiRequestsMP {
         });
         return result;
     }
-    // POST STRING PRIKORMLIST
-    public void POSTPrikormLists(IApiCallServiceMP iApiCallServiceMP, int idUser,String dateMeal, String meal,String product,int weight,String reaction) {
+    // POST PRIKORMLIST
+    public void POSTPrikormLists(int idUser,String dateMeal, String meal,String product,int weight,String reaction) {
 
         PrikormList prikormList = new PrikormList(idUser, dateMeal, meal, product, weight, reaction);
 
-        Call<PrikormList> call = iApiCallServiceMP.createPrikormList(prikormList);
+        Call<PrikormList> call = getCallService().createPrikormList(prikormList);
 
         call.enqueue(new Callback<PrikormList>() {
             @Override
@@ -146,13 +159,14 @@ public class ApiRequestsMP {
             }
         });
     }
-    // GET STRING USERS
-    public String[] GETUsers(IApiCallServiceMP iApiCallServiceMP) {
+
+    // GET USERS
+    public String[] GETUsers() {
         String[] result;
         int leng = 100;
         result = new String[leng];
 
-        Call<List<User>> call = iApiCallServiceMP.getUsers();
+        Call<List<User>> call = getCallService().getUsers();
 
         call.enqueue(new Callback<List<User>>() {
             @Override
@@ -182,12 +196,12 @@ public class ApiRequestsMP {
         });
         return result;
     }
-    // POST STRING USERS
-    public void POSTUsers(IApiCallServiceMP iApiCallServiceMP, String username, String childName, String password,String email,String phoneno) {
+    // POST USERS
+    public void POSTUsers(String username, String childName, String password,String email,String phoneno) {
 
         User user = new User(username,childName,password,email,phoneno);
 
-        Call<User> call = iApiCallServiceMP.createUser(user);
+        Call<User> call = getCallService().createUser(user);
 
         call.enqueue(new Callback<User>() {
             @Override
@@ -203,6 +217,50 @@ public class ApiRequestsMP {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // GET STRING USERS
+    public String[] GETUsersByUserName(String username) {
+        String[] result;
+        int leng = 100;
+        result = new String[leng];
+        //result[0] = "false";
+
+        Call<List<User>> call = getCallService().getUsersByUsername("Анна");
+        call.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(context, "Что-то пошло не так! Код: " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<User> users = response.body();
+                int i = 0;
+                for (User user:users){
+                    String content = "";
+                    content += user.getId();
+                    content += user.getUsername();
+                    content += user.getChildName();
+                    content += user.getPassword();
+                    result[i] = content;
+                    i++;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return result;
+    }
+
+    // Login
+    public UserService getUserService(){
+        UserService userService = getRetrofit().create(UserService.class);
+        return userService;
     }
 
 }

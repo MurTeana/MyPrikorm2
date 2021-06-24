@@ -1,4 +1,4 @@
-package com.example.myfirstprikorm.data.ViewModel;
+package com.example.myfirstprikorm.model;
 
 import com.google.gson.annotations.SerializedName;
 
