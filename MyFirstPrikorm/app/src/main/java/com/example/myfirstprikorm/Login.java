@@ -72,6 +72,7 @@ public class Login extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+
                             Intent intent = new Intent(Login.this, Dashboard.class);
 
                             String userIdFromDB = loginResponse.getId();

@@ -13,8 +13,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface IApiCallServiceMP {
-//    @GET("posts")
-//    Call<List<Post>> getPosts();
+
     @GET("/api/Products")
     Call<List<Product>> getProducts();
 
@@ -27,8 +26,6 @@ public interface IApiCallServiceMP {
     @GET("/api/Users/{id}")
     Call<List<User>> getUsersById(@Path("id") int groupId);
 
-//    @GET("/api/Users/{username}")
-//    Call<List<User>> getUsersByUsername(@Path("username") String username);
     @GET("/api/Users")
     Call<List<User>> getUsersByUsername(@Query("username") String username);
 
@@ -40,4 +37,12 @@ public interface IApiCallServiceMP {
 
     @POST("/api/PrikormLists")
     Call<PrikormList> createPrikormList(@Body PrikormList prikormList);
+
+    @GET("/api/PrikormLists/x/{userId}")
+    Call<List<PrikormList>> getPrikormListsByUserId (@Path("userId") int userId);
+
+    //    @GET("/api/Users/{username}")
+//    Call<List<User>> getUsersByUsername(@Path("username") String username);
+
+
 }

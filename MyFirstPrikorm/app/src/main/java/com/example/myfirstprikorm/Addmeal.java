@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.RequiresApi;
@@ -21,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfirstprikorm.api.ApiRequestsMP;
 import com.example.myfirstprikorm.api.IApiCallServiceMP;
+import com.example.myfirstprikorm.ui.mymenu.MymenuFragment;
 import com.example.myfirstprikorm.ui.mymenu.MymenuViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -33,10 +35,11 @@ import static java.lang.Integer.parseInt;
 
 public class Addmeal extends AppCompatActivity {
 
+    public String idUser_;
     TextInputLayout addValue;
     Button addMenuBtn;
     Spinner addMealfrSp,addProdfrSp;
-    EditText addData, addUserId;
+    EditText addData;
     String[] data = {"Завтрак", "Обед","Полдник","Ужин"};
 
     ArrayList<String> arrayProductsList = new ArrayList<>();
@@ -48,9 +51,16 @@ public class Addmeal extends AppCompatActivity {
 
         addData = findViewById(R.id.date_time_input);
         addValue = findViewById(R.id.addValue);
-        addUserId = findViewById(R.id.userIdEdT);
         addMenuBtn = findViewById(R.id.addMenuBtn);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null){
+            idUser_ = extras.getString("id");
+        }
+        else{
+            idUser_ = "1";
+        }
+ //       addIdUser.setText(idUser_);
         addData.setInputType(InputType.TYPE_NULL);
 
         addData.setOnClickListener(new View.OnClickListener() {
@@ -159,11 +169,14 @@ public class Addmeal extends AppCompatActivity {
     }
 // AddMenu
     public void addMenuToDB(View view) {
+
+
         if(!validateData() | !validateValue() ) {
             return;
         }
+
         //Get all values in Strings
-        int idUser = 1;//getUserId()
+        int idUser = Integer.parseInt(idUser_);
         String dateMeal = addData.getText().toString();
         String meal = addMealfrSp.getSelectedItem().toString();
         String product = addProdfrSp.getSelectedItem().toString();
@@ -178,11 +191,4 @@ public class Addmeal extends AppCompatActivity {
         Intent intent = new Intent(Addmeal.this, MymenuViewModel.class);
         startActivity(intent);
     }
-
-    private void getUserId_() {
-//        Intent intent = getIntent();
-//        String userId = intent.getStringExtra("id");
-//        addUserId.setText(userId);
-    }
-
 }

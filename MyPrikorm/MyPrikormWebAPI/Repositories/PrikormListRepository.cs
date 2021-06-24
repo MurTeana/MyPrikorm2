@@ -28,6 +28,15 @@ namespace MyPrikormWebAPI.Repositories
             return await db.PrikormLists.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<List<PrikormList>> GetByIdUser(int IdUser)
+        {
+            List<PrikormList> prikormList = await db.PrikormLists
+                .Where(x => x.IdUser == IdUser)
+                .ToListAsync();
+
+            return prikormList;
+        }
+
         public PrikormList Create(PrikormList prikormList)
         {
             if (prikormList != null)

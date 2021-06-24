@@ -76,8 +76,8 @@ D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsof
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
-D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csprojAssemblyReference.cache
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\MyPrikormWebAPI.styles.css
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Sadukov\MyPrikorm2\MyPrikorm\MyPrikormWebAPI\obj\Debug\netcoreapp3.1\MyPrikormWebAPI.csprojAssemblyReference.cache

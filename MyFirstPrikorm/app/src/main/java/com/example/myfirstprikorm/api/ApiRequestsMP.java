@@ -137,6 +137,43 @@ public class ApiRequestsMP {
         });
         return result;
     }
+    // GET PRIKORMLISTS BY ID
+    public String[] GETPrikormListsById(int userId) {
+        String[] result;
+        int leng = 100;
+        result = new String[leng];
+
+        Call<List<PrikormList>> call = getCallService().getPrikormListsByUserId(userId);
+
+        call.enqueue(new Callback<List<PrikormList>>() {
+            @Override
+            public void onResponse(Call<List<PrikormList>> call, Response<List<PrikormList>> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(context, "Что-то пошло не так! Код: " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<PrikormList> prikormLists = response.body();
+                //int leng1 = products.size();
+                int i = 0;
+                for (PrikormList prikormList:prikormLists){
+                    String content = "";
+                    content += prikormList.getDateMeal()+"\n";
+                    content += prikormList.getMeal()+"\n";
+                    content += prikormList.getProduct()+"   ";
+                    content += prikormList.getWeight()+"\n";
+                    content += prikormList.getReaction();
+                    result[i] = content;
+                    i++;
+                }
+            }
+            @Override
+            public void onFailure(Call<List<PrikormList>> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return result;
+    }
     // POST PRIKORMLIST
     public void POSTPrikormLists(int idUser,String dateMeal, String meal,String product,int weight,String reaction) {
 

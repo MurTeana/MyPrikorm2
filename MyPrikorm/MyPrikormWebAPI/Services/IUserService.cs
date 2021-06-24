@@ -16,7 +16,7 @@ namespace MyPrikormWebAPI.Services
     {
         private List<User> _users = new List<User>
         {
-            new User {Id = 1, ChildName = "test", Email ="test", Password = "test", Pnoneno ="", Username = "Usertest"}
+            new User {Id = 1, ChildName = "test", Email ="test", Password = "test", Phoneno ="0", Username = "Usertest"}
         };
 
         public async Task<User> Authenticate(string username, string password)
@@ -27,16 +27,11 @@ namespace MyPrikormWebAPI.Services
                 return null;
 
             return user;
-            //return user.WithoutPassword();
         }
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            //           return await Task.Run(() => _users.WithoutPassword());
             return await Task.Run(() => _users);
         }
-
-
-
     }
 }

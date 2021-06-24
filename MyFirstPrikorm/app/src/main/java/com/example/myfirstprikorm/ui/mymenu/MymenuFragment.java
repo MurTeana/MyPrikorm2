@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import com.example.myfirstprikorm.R;
 import com.example.myfirstprikorm.Addmeal;
 import com.example.myfirstprikorm.api.ApiRequestsMP;
-import com.example.myfirstprikorm.api.IApiCallServiceMP;
 
 public class MymenuFragment extends Fragment {
 
@@ -28,12 +27,23 @@ public class MymenuFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_mymenu,container, false);
 
+        String idUser_;
+
+        Bundle extras = getActivity().getIntent().getExtras();
+
+        if(extras!=null){
+            idUser_ = extras.getString("id");
+        }
+        else{
+            idUser_ = "1";
+        }
+
         addMealBtn = root.findViewById(R.id.addMealBtn);
         listViewResult = root.findViewById(R.id.listView_menu);
 
         ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
 
-        final String[] result = apiRequestsMP_.GETPrikormLists();
+        final String[] result = apiRequestsMP_.GETPrikormListsById(Integer.parseInt(idUser_));
         arrayAdapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,result);
         listViewResult.setAdapter(arrayAdapter);
 
@@ -41,6 +51,7 @@ public class MymenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), Addmeal.class);
+                intent.putExtra("id",idUser_);
                 startActivity(intent);
             }
         });

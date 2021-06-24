@@ -19,7 +19,7 @@ namespace MyPrikormWebAPI.Model.DB.Entities
         public string Username { get; set; }
         public string ChildName { get; set; }
         public string Email { get; set; }
-        public string Pnoneno { get; set; }
+        public string Phoneno { get; set; }
         public string Password { get; set; }
 
         public virtual ICollection<PrikormList> PrikormList { get; set; }

@@ -41,7 +41,6 @@ namespace MyPrikormWebAPI.Repositories
                 return null;
 
             return user;
-            // return user.WithoutPassword();
         }
 
 

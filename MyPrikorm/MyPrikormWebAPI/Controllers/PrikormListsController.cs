@@ -55,6 +55,27 @@ namespace MyPrikormWebAPI.Controllers
             }
         }
 
+        [HttpGet("x/{IdUser}")]
+        public async Task<ActionResult<List<PrikormList>>> GetByIdUser(int IdUser)
+        {
+            try
+            {
+                List<PrikormList> prikormlist = await prikormlistRepository.GetByIdUser(IdUser);
+                if (prikormlist == null)
+                {
+                    logger.Info("PrikormList is not found: " + IdUser + ".");
+                    return NotFound();
+                }
+
+                return Ok(prikormlist);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return BadRequest(ex);
+            }
+        }
+
         [HttpPost]
         public ActionResult<PrikormList> Post(PrikormList prikormlist)
         {
