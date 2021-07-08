@@ -40,7 +40,6 @@ public class Addmeal extends AppCompatActivity {
     Button addMenuBtn;
     Spinner addMealfrSp,addProdfrSp;
     EditText addData;
-    String[] data = {"Завтрак", "Обед","Полдник","Ужин"};
 
     ArrayList<String> arrayProductsList = new ArrayList<>();
 
@@ -52,6 +51,8 @@ public class Addmeal extends AppCompatActivity {
         addData = findViewById(R.id.date_time_input);
         addValue = findViewById(R.id.addValue);
         addMenuBtn = findViewById(R.id.addMenuBtn);
+
+        ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
 
         Bundle extras = getIntent().getExtras();
         if(extras!=null){
@@ -72,7 +73,8 @@ public class Addmeal extends AppCompatActivity {
 // Meal
         addMealfrSp = findViewById(R.id.mealspinner);
 
-        ArrayAdapter<String> adapterMeal = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,data);
+        String[] meal_res = apiRequestsMP_.GETMeals();
+        ArrayAdapter<String> adapterMeal = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,meal_res);
         adapterMeal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addMealfrSp.setAdapter(adapterMeal);
         addMealfrSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -89,7 +91,7 @@ public class Addmeal extends AppCompatActivity {
 // Product
         addProdfrSp = findViewById(R.id.prodspinner);
 
-        ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
+
         String[] products_res = apiRequestsMP_.GETProducts();
 
         ArrayAdapter<String> adapterProducts = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,products_res);

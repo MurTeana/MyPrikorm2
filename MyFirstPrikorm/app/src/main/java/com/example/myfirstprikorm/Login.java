@@ -112,10 +112,10 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    private void isUser(){
-        final String userEnteredUsername = username.getEditText().getText().toString().trim();
-        final String userEnteredPassword = password.getEditText().getText().toString().trim();
-    }
+//    private void isUser(){
+//        final String userEnteredUsername = username.getEditText().getText().toString().trim();
+//        final String userEnteredPassword = password.getEditText().getText().toString().trim();
+//    }
 
     private  Boolean validateUsername(){
         String val=username.getEditText().getText().toString();

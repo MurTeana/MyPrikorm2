@@ -1,28 +1,19 @@
 package com.example.myfirstprikorm.model;
 
-import com.google.gson.annotations.SerializedName;
-
-public class Product {
+public class Meal {
     private Integer id;
 
-    //@SerializedName("body")
-    private String product_;
+    private String meal_;
 
-    public Product(String product_) {
-        this.product_ = product_;
+    public Meal(String meal_) {
+        this.meal_ = meal_;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public String getProduct() {
-        return product_;
+    public String getMeal_() {
+        return meal_;
     }
-
-    public void setProduct(String product) {
-        product_ = product;
-    }
-
-
 }

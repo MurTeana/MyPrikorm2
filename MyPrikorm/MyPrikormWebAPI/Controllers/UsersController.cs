@@ -97,8 +97,8 @@ namespace MyPrikormWebAPI.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public ActionResult<User> Put(long id, User user)
+        [HttpPut("put/{id}")]
+        public ActionResult<User> Put(int id, User user)
         {
             if (!ModelState.IsValid)
             {

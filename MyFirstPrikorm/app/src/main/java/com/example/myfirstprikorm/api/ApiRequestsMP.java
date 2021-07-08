@@ -1,5 +1,6 @@
 package com.example.myfirstprikorm.api;
 
+import com.example.myfirstprikorm.model.Meal;
 import com.example.myfirstprikorm.model.PrikormList;
 import com.example.myfirstprikorm.model.Product;
 import com.example.myfirstprikorm.model.User;
@@ -255,49 +256,66 @@ public class ApiRequestsMP {
             }
         });
     }
+    // POST USERS
+    public void PUTUsers(int id, String username, String childName, String password,String email,String phoneno) {
 
-    // GET STRING USERS
-    public String[] GETUsersByUserName(String username) {
-        String[] result;
-        int leng = 100;
-        result = new String[leng];
-        //result[0] = "false";
+        User user = new User(username,childName,password,email,phoneno);
 
-        Call<List<User>> call = getCallService().getUsersByUsername("Анна");
-        call.enqueue(new Callback<List<User>>() {
+        Call<User> call = getCallService().updateUser(id, user);
+
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 if (!response.isSuccessful()){
                     Toast.makeText(context, "Что-то пошло не так! Код: " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                List<User> users = response.body();
-                int i = 0;
-                for (User user:users){
-                    String content = "";
-                    content += user.getId();
-                    content += user.getUsername();
-                    content += user.getChildName();
-                    content += user.getPassword();
-                    result[i] = content;
-                    i++;
-                }
             }
 
             @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        return result;
     }
 
     // Login
     public UserService getUserService(){
         UserService userService = getRetrofit().create(UserService.class);
         return userService;
+    }
+
+    // GET MEALS
+    public String[] GETMeals() {
+        String[] result;
+        int leng = 4;
+        result = new String[leng];
+
+        Call<List<Meal>> call = getCallService().getMeals();
+
+        call.enqueue(new Callback<List<Meal>>() {
+            @Override
+            public void onResponse(Call<List<Meal>> call, Response<List<Meal>> response) {
+                if (!response.isSuccessful()){
+                    Toast.makeText(context, "Что-то пошло не так! Код: " + String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Meal> meals = response.body();
+                int i = 0;
+                for (Meal meal:meals){
+                    String content = "";
+                    content += meal.getMeal_();
+                    result[i] = content;
+                    i++;
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Meal>> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return result;
     }
 
 }

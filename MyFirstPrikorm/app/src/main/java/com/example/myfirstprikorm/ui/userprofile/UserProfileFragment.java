@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.myfirstprikorm.R;
+import com.example.myfirstprikorm.api.ApiRequestsMP;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class UserProfileFragment extends Fragment {
@@ -22,6 +23,7 @@ public class UserProfileFragment extends Fragment {
     TextInputLayout childname, email, password, phoneno;
     Button changeData_btn;
     String _NAME, _CHILDNAME, _EMAIL, _PASSWORD, _PHONENO;
+    int id = 1;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -66,6 +68,9 @@ public class UserProfileFragment extends Fragment {
 
   public void update(View view){
         if( isChildNameChanged() | isEmailChanged() | isPasswordChanged() | isPhoneNoChanged()) {
+
+            ApiRequestsMP apiRequestsMP_ = new ApiRequestsMP();
+            apiRequestsMP_.PUTUsers(id, username.toString(), childname.toString(), password.toString(), email.toString(), phoneno.toString());
 
             Toast.makeText(getActivity(), "Данные обновлены", Toast.LENGTH_LONG).show();
 
